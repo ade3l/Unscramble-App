@@ -8,17 +8,22 @@ class GameViewModel : ViewModel() {
         Log.d("GameFragment", "GameViewModel created!")
         getNextWord()
     }
-    private var score = 0
+    private var _score = 0
     private var _currentWordCount = 0
     private lateinit var _currentScrambledWord : String
+
+    val score : Int
+        get()=_score
     val currentScrambledWord :String
         get() = _currentScrambledWord
     val currentWordCount : Int
         get()= _currentWordCount
+
     override fun onCleared() {
         super.onCleared()
         Log.d("GameFragment", "GameViewModel destroyed!")
     }
+
     private var wordsList: MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
     fun getNextWord() {
